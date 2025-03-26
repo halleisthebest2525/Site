@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="HandheldFriendly" content="True" />
     <meta name="MobileOptimized" content="320" />
@@ -19,21 +20,7 @@
 
     
 
-            // Enter 키 새로고침 문제 해결을 위해 스크립트문 추가
-            $(window).ready(function () {
-                $('input[type="text"]').on("keypress", function (event) {
-                    if (event.keyCode === 13) {
-                        if ($(this).hasClass("keypress-enter") === false) {
-                            event.preventDefault();
-                        };
-                    };
-                });
-                $('input[type="password"]').on("keypress", function (event) {
-                    if (event.keyCode === 13) {
-                        event.preventDefault();
-                    };
-                });
-            });
+
         </script>
 
 </script>
@@ -47,34 +34,7 @@
         <a href="/"><img src="/Common/Images/TopLogo.png" alt="GVCS 글로벌선진학교 문경캠퍼스" /></a>
         <a href="javascript:void(0)"><img src="/Common/Images/TopLogo2.png" alt="Google for Education Reference School"/></a>
     </h1>
-    <div class="TopMenu">
-        <ul>
-            <li id="CommonTopMenu1_lilogin"><a href="/CMN/CMN0900/CMN0901S.aspx?MENU_ID=103"><span>Login</span></a></li>
-            <li id="CommonTopMenu1_lijoin"><a href="/CMN/CMN0900/CMN0900U_01.aspx?MENU_ID=105"><span>회원가입</span></a></li>
-            
-            
-            <li><a href="http://www.gemgem.org/" id="CommonTopMenu1_hlnkGEM" target="_blank" title="GEM 글로벌교육선교회 홈페이지 새창 열림"><span>GEM</span></a></li>
-            
-            <li><a href="http://www.gvcs-es.org" id="CommonTopMenu1_hlnk001_01" target="_blank" title="음성캠퍼스 홈페이지 새창 열림"><span>음성캠퍼스</span></a></li>
-            <li><a href="https://broadfording.com/" id="CommonTopMenu1_hlnk003_01" target="_blank" title="미국캠퍼스 홈페이지 새창 열림"><span>미국캠퍼스</span></a></li>
-            <li><a href="http://gvcs-sc.org" id="CommonTopMenu1_A1" target="_blank" title="세종창의캠퍼스 홈페이지 새창 열림"><span>세종창의캠퍼스</span></a></li>
-            
-            <li><a href="http://gw.gemgem.org" target="_blank" title="Groupware(국내) 새창 열림"><span>INTRANET</span></a></li>
-            <!-- li><a href="http://gemgvcs.net" target="_blank" title="Groupware(국외) 새창 열림"><span>GW(국외)</span></a></li -->
-            <li class="last"><a href="http://www.gvcs-e.org" target="_blank" title="GVCS 영문 홈페이지 새창 열림"><span>English</span></a></li>
-            
-        </ul>
-        <br class="clearfloat" />
-    </div>
-    <div id="MainMenu" class="MainMenu">
-        <p class="skip">키보드로 상단메뉴 이용시 탭키로 첫번째 메뉴가 선택된 상태에서 상,하,좌,우 방향키로 이동이 가능합니다.</p>
-        <ul id="MainNavigation" class="MenuBarHorizontal">
-            <li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=2&MENU_ID=1"><span>About Us</span></a><ul><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=2&MENU_ID=7">법인</a><ul><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=2&MENU_ID=8">설립이사장</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=6&MENU_ID=9">글로벌선진교육선언문</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=7&MENU_ID=10">글로벌선진교육은 어떻게</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=9&MENU_ID=12">조직</a></li><li><a href = "/CMN/CMN0300/CMN0304S.aspx?MENU_ID=164">MOU현황</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=66&MENU_ID=171">자매학교</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=4&MENU_ID=13">이사회</a></li></ul></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=11&MENU_ID=14">후원</a><ul><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=11&MENU_ID=15">소개</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=40&MENU_ID=16">모금현황</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=55&MENU_ID=150">Vision Tree</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=65&MENU_ID=152">Faith Aim Dream</a></li></ul></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=12&MENU_ID=19">홍보</a><ul><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=12&MENU_ID=23">언론보도</a></li></ul></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=13&MENU_ID=25">학교소개</a><ul><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=13&MENU_ID=26">학교장인사말</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=14&MENU_ID=27">연혁</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=15&MENU_ID=28">학교시설</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=16&MENU_ID=29">상징</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=17&MENU_ID=30">학교현황</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=56&MENU_ID=148">업무 소개</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=19&MENU_ID=33">찾아오시는길</a></li></ul></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=22&MENU_ID=37">글로벌인재상</a></li></ul></li><li><a href = "/CST/CST0100/CST0106S.aspx?MENU_ID=4"><span>Admission</span></a><ul><li><a href = "/CST/CST0100/CST0106S.aspx?MENU_ID=63">모집요강</a></li><li><a href = "/CST/CST0100/CST0101U.aspx?MENU_ID=66">온라인지원</a><ul><li><a href = "/CST/CST0100/CST0101U.aspx?MENU_ID=67">온라인지원서 등록</a></li><li><a href = "/CST/CST0100/CST0101S.aspx?MENU_ID=131">온라인지원서 조회</a></li><li><a href = "/CST/CST0100/CST0102S.aspx?MENU_ID=175">입학지원서 다운</a></li></ul></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=40&MENU_ID=70">신/편입 공지</a></li><li><a href = "/CST/CST0300/CST0302M.aspx?MENU_ID=189">입학설명회 예약</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=25&MENU_ID=69">자주하는질문</a></li></ul></li><li><a href = "/CMN/CMN0400/CMN0412S.aspx?MENU_ID=3"><span>Academics</span></a><ul><li><a href = "/CMN/CMN0400/CMN0412S.aspx?MENU_ID=43">학사일정</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=69&MENU_ID=199">교육과정</a><ul><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=69&MENU_ID=223">교육특징</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=62&MENU_ID=200">교과별 교육과정</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=65&MENU_ID=217">트랙별 교육과정</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=63&MENU_ID=201">창의적 체험활동</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=40&MENU_ID=111">단위편성표</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=91&MENU_ID=222">School Profile</a></li></ul></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=37&MENU_ID=112">규정</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=59&MENU_ID=172">서식자료실</a></li></ul></li><li><a href = "/CST/CST0400/CST0401S.aspx?MENU_ID=2"><span>Campus life</span></a><ul><li><a href = "/CST/CST0400/CST0401S.aspx?MENU_ID=44">급식일정</a><ul><li><a href = "/CST/CST0400/CST0401S.aspx?MENU_ID=157">급식일정</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=53&MENU_ID=153">급식안내</a></li></ul></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=5&MENU_ID=101">갤러리</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=6&MENU_ID=102">동영상갤러리</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=38&MENU_ID=97">작은편지</a></li><li><a href = "/CMN/CMN0100/CMN0103S.aspx?MENU_ID=213">학교생활가이드</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=26&MENU_ID=45">생활교육단</a><ul><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=26&MENU_ID=139">소개</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=53&MENU_ID=143">시설현황</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=51&MENU_ID=140">일정표</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=50&MENU_ID=144">자료실</a></li></ul></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=33&MENU_ID=72">영성교육부(Chapel)</a><ul><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=33&MENU_ID=73">예배안내</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=34&MENU_ID=74">교육과 교제</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=42&MENU_ID=75">봉사와 선교</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=43&MENU_ID=83">기도 및 상담요청</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=44&MENU_ID=88">토요영어학교</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=54&MENU_ID=145">학년별 영성수련회</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=21&MENU_ID=120">주보</a></li></ul></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=49&MENU_ID=121">진로진학지도부</a><ul><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=49&MENU_ID=127">진학지도소개</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=46&MENU_ID=130">자료실</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=45&MENU_ID=124">열린게시판</a></li></ul></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=23&MENU_ID=38">상담실</a><ul><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=23&MENU_ID=198">상담실안내</a></li></ul></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=52&MENU_ID=142">태권도교육</a></li><li><a href = "/CST/CST0800/CST0801S.aspx?MENU_ID=126">스포츠부</a><ul><li><a href = "/CST/CST0800/CST0801S.aspx?MENU_ID=167">축구부</a></li></ul></li></ul></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=1&MENU_ID=6"><span>Support</span></a><ul><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=1&MENU_ID=95">일반공지</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=90&MENU_ID=218">교내외수상소식</a></li><li><a href = "/CMN/CMN0300/CMN0303S_02.aspx?MENU_ID=176">증명서 신청</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=60&MENU_ID=151">자주하는질문</a></li><li><a href = "http://www.schoolinfo.go.kr/index.jsp" target="blank">학교정보공시</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=39&MENU_ID=99">학교운영위원회</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=74&MENU_ID=181">공개자료방</a><ul><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=74&MENU_ID=182">수익자부담경비</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=75&MENU_ID=183">교비예결산</a></li></ul></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=88&MENU_ID=214">학교폭력신고</a></li><li><a href = "https://www.gemgem.org/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=6&MENU_ID=102" target="blank">채용공고</a></li><li><a href = "/CMN/CMN0100/CMN0101S.aspx?BOARD_MST_NO=92&MENU_ID=224">비전관예약안내</a></li></ul></li><li class="skip"><a href = /CMN/CMN0900/CMN0901S.aspx?MENU_ID=0><span>Membership</span></a><ul><li><a href = "/CMN/CMN0900/CMN0901S.aspx?MENU_ID=103">로그인</a></li><li><a href = "/CMN/CMN0900/CMN0905U.aspx?MENU_ID=104">ID/PW 찾기</a></li><li><a href = "/CMN/CMN0900/CMN0906U.aspx?MENU_ID=215">동문 ID 찾기</a></li><li><a href = "/CMN/CMN0900/CMN0900U_01.aspx?MENU_ID=105">회원가입</a></li><li><a href = "/CMN/CMN0900/CMN0904U.aspx?MENU_ID=133">회원정보수정</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=35&MENU_ID=106">개인정보보호정책</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=36&MENU_ID=107">저작권보호정책</a></li><li><a href = "/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=37&MENU_ID=108">이메일무단수집거부</a></li><li><a href = "/CMN/CMN0900/CMN0902S.aspx?MENU_ID=109">사이트맵</a></li><li><a href = "/CMN/CMN0900/CMN0903U.aspx?MENU_ID=115">기존회원이전</a></li></ul></li>
-            
-        </ul>
-        <br class="clearfloat" />
-    </div>
-</div>
+
 
             <div class="Visual">
                 <p>
@@ -114,18 +74,17 @@
                     </div>
                     
                     
-                    <div class="Contents">
-                        <input name="ctl00$MenuCode" type="text" value="m060600" id="MenuCode" class="skip" onKeyPress="javascript:return EnterKeyPress(&#39;ctl00$CommonCopyright1$FamilySiteLink&#39;);" />
+                    
                         
 
     </script>
 
     <div class="Login">
 		<h4>Member <strong>Login</strong></h4>
-		<label for="txtUserID">ID</label><input name="ctl00$IContents$txtUserID" type="text" value="fff" id="IContents_txtUserID" title="ID" class="inputBox" Group="Login" ReqCtrl="True" RegType="None" Description="ID" Separator="." Cipher="0" /><br />
+		<label for="txtUserID">ID</label><input name="ctl00$IContents$txtUserID" type="text" value="" id="IContents_txtUserID" title="ID" class="inputBox" Group="Login" ReqCtrl="True" RegType="None" Description="ID" Separator="." Cipher="0" /><br />
 		<label for="txtUserPW">PW</label><input name="ctl00$IContents$txtUserPW" type="password" id="IContents_txtUserPW" title="Password" class="inputBox" Group="Login" RegType="None" Description="Password" Separator="." Cipher="0" /><br />
 		<span class="btn c01" style="margin-left:45px;"><input type="submit" name="ctl00$IContents$btnLogin" value="Login" onclick="return ClientValidate(this);" id="IContents_btnLogin" AlternateText="Login" Group="Login" /></span>
-		<span class="btn c03"><input type="submit" name="ctl00$IContents$btnIDFind" value="Find" onclick="return ClientValidate(this);" id="IContents_btnIDFind" class="skip" AlternateText="Find ID or Password" /></span>
+		
 		
         <p>
             <span class="requird">* <strong>학생 및 교직원</strong>은 <strong>학번 또는 사번</strong>을 입력하세요.</span><br />
@@ -143,38 +102,7 @@
             <!-- Copyright -->
             
 
-<div class="Footer">
-	<div class="FooterMenu">
-		<ul>
-			<li><a href="/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=35&MENU_ID=106"><span>개인정보보호정책</span></a></li>
-			<li><a href="/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=36&MENU_ID=107"><span>저작권보호정책</span></a></li>
-			<li><a href="/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=37&MENU_ID=108"><span>이메일무단수집거부</span></a></li>
-			<li><a href="/CMN/CMN0300/CMN0301S.aspx?PAGE_NO=19&MENU_ID=33"><span>찾아오시는 길</span></a></li>
-			<li><a href="/CMN/CMN0900/CMN0902S.aspx?MENU_ID=109"><span>사이트맵</span></a></li>
-<li class="ml10"><a href="http://blog.naver.com/gemgem_org" target="_blank" title="새창열림"><img src="https://www.gemgem.org/Common/Images/ico_naverblog.gif" alt="네이버블로그" /></a></li>
-            <!--li><a href="https://www.facebook.com/%EA%B8%80%EB%A1%9C%EB%B2%8C%EC%84%A0%EC%A7%84%ED%95%99%EA%B5%90-224546860993002/?ref=hl" target="_blank" title="새창열림"><img src="https://www.gemgem.org/Common/Images/ico_facebook.gif" alt="페이스북" /></a></li>
-		<li><a title="새창열림" href="https://story.kakao.com/ch/gemgvcs" target="_blank"><img alt="카카오스토리" src="https://www.gemgem.org/Common/Images/ico_kstory.gif"></a></li-->
-		<li><a title="새창열림" href="https://www.instagram.com/gvcs_mg/" target="_blank"><img alt="인스타그램" src="https://www.gemgem.org/Common/Images/ico_insta.gif"></a></li>
-       		<li><a title="새창열림" href="https://www.youtube.com/c/GVCSMG" target="_blank"><img alt="유투브" src="https://www.gemgem.org/Common/Images/ico_youtube.gif"></a></li>
-            <li><a title="새창열림" href="https://www.youtube.com/channel/UCAPImhMffpvr5AlIwgQkXpg" target="_blank">
-                    <img alt="GMB GVCS" src="/Common_new/Images/ico_gmbgvcs.gif"></a></li>
-       		
-	 </ul>
-		<br class="clearfloat" />
-		<div class="FamilySite">
-			<label for="CommonCopyright1_FamilySiteLink" class="skip">패밀리사이트 바로가기</label>
-            <select name="ctl00$CommonCopyright1$FamilySiteLink" id="CommonCopyright1_FamilySiteLink" onKeyPress="javascript:return EnterKeyPress(&#39;ctl00$MenuCode&#39;);">
-	<option selected="selected" value="">패밀리사이트 바로가기</option>
-	<option value="http://www.gemgem.org">GEM - 글로벌선진교육</option>
-	<option value="http://www.gvcs-es.org">GVCS 음성캠퍼스</option>
-	<option value="http://www.gvcs-mg.org">GVCS 문경캠퍼스</option>
-	<option value="https://broadfording.com/">GVCS PA(ENG)</option>
-	<option value="http://gw.gemgem.org">그룹웨어(더존)</option>
 
-</select>
-			<input type="button" name="go_button" id= "go_button" value="이동" class="btn_go" onclick="MM_jumpMenuGo('CommonCopyright1_FamilySiteLink', 'blank', 0)" />
-		</div>
-	</div>
 	<div class="Copyright">
 		<address>
 			36941 경상북도 문경시 영순면 영순로 366 글로벌선진학교 문경캠퍼스<br>

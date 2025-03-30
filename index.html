@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Korean Vocab Test</title>
+  <title>영단어 시험</title>
 </head>
 <body>
   <h1>Korean Vocab Test</h1>
@@ -72,23 +72,23 @@
     function loadQuestion() {
       currentWord = vocab[Math.floor(Math.random() * vocab.length)];
       document.getElementById("question").innerText =
-        "What is the Korean meaning of: " + currentWord.english + "?";
+        currentWord.english + "의 의미는?";
     }
     
     function checkAnswer() {
       const userAnswer = document.getElementById("answer").value.trim();
       const isCorrect = currentWord.korean.some(ans => ans === userAnswer);
       if (isCorrect) {
-        document.getElementById("result").innerText = "Correct!";
+        document.getElementById("result").innerText = "정답이노 이기야!";
       } else {
-        document.getElementById("result").innerText = "Incorrect. Acceptable answers: " + currentWord.korean.join(", ");
+        document.getElementById("result").innerText = "틀렸노  답: " + currentWord.korean.join(", ");
       }
       // Prepare next question after a short delay
       setTimeout(() => {
         document.getElementById("answer").value = "";
         document.getElementById("result").innerText = "";
         loadQuestion();
-      }, 2000);
+      }, 1000);
     }
     
     loadQuestion();

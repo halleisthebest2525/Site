@@ -1,13 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Password Check</title>
+  <meta charset="UTF-8">
+  <title>Korean Vocab Test</title>
 </head>
 <body>
-    <h2>Enter Password</h2>
-    <form action="check.php" method="POST">
-        <input type="password" name="password" required>
-        <button type="submit">Submit</button>
-    </form>
+  <h1>Korean Vocab Test</h1>
+  <div id="quiz">
+    <p id="question"></p>
+    <input type="text" id="answer" placeholder="Your answer">
+    <button onclick="checkAnswer()">Submit</button>
+  </div>
+  <p id="result"></p>
+
+  <script>
+    const vocab = [
+      { english: "culture", korean: ["문화", "교양"] },
+      { english: "experience", korean: ["경험"] },
+      { english: "education", korean: ["교육"] },
+      { english: "symbol", korean: ["상징"] },
+      { english: "effect", korean: ["결과", "영향", "효과"] },
+      { english: "liberty", korean: ["자유"] },
+      { english: "affair", korean: ["사건", "일"] },
+      { english: "comfort", korean: ["안락", "위안"] },
+      { english: "tradition", korean: ["전통", "전설"] },
+      { english: "subject", korean: ["학과", "주제", "백성"] },
+      { english: "object", korean: ["물건", "목적"] },
+      { english: "source", korean: ["출처", "근원"] },
+      { english: "revolution", korean: ["혁명"] },
+      { english: "pollution", korean: ["오염"] },
+      { english: "system", korean: ["조직", "체계", "제도"] },
+      { english: "triumph", korean: ["승리"] },
+      { english: "respect", korean: ["존경"] },
+      { english: "communication", korean: ["의사소통"] },
+      { english: "foundation", korean: ["기초", "근거", "설립"] },
+      { english: "glory", korean: ["영광"] },
+      { english: "situation", korean: ["위치", "상황"] },
+      { english: "competition", korean: ["경쟁"] },
+      { english: "prairie", korean: ["대초원"] },
+      { english: "effort", korean: ["노력"] },
+      { english: "section", korean: ["부분", "구역"] },
+      { english: "rein", korean: ["고삐"] },
+      { english: "solution", korean: ["해결", "용해"] },
+      { english: "honor", korean: ["명예", "경의"] },
+      { english: "unity", korean: ["통일", "일치"] },
+      { english: "population", korean: ["인구"] },
+      { english: "direction", korean: ["방향", "지시"] },
+      { english: "dialogue", korean: ["대화"] },
+      { english: "republic", korean: ["공화국"] },
+      { english: "method", korean: ["방법"] },
+      { english: "increase", korean: ["증가"] },
+      { english: "decrease", korean: ["감소"] },
+      { english: "amount", korean: ["총액", "양"] },
+      { english: "ancestor", korean: ["조상", "선조"] },
+      { english: "voyage", korean: ["항해", "여행"] },
+      { english: "sculpture", korean: ["조각"] },
+      { english: "instrument", korean: ["기구", "악기"] },
+      { english: "figure", korean: ["모습", "인물", "숫자"] },
+      { english: "activity", korean: ["활동"] },
+      { english: "cause", korean: ["원인", "이유"] },
+      { english: "worth", korean: ["가치"] },
+      { english: "accident", korean: ["사고"] },
+      { english: "adventure", korean: ["모험"] },
+      { english: "view", korean: ["경치", "의견"] },
+      { english: "relative", korean: ["친척", "상대적"] },
+      { english: "superstition", korean: ["미신"] }
+    ];
+    
+    let currentWord = {};
+    
+    function loadQuestion() {
+      currentWord = vocab[Math.floor(Math.random() * vocab.length)];
+      document.getElementById("question").innerText =
+        "What is the Korean meaning of: " + currentWord.english + "?";
+    }
+    
+    function checkAnswer() {
+      const userAnswer = document.getElementById("answer").value.trim();
+      const isCorrect = currentWord.korean.some(ans => ans === userAnswer);
+      if (isCorrect) {
+        document.getElementById("result").innerText = "Correct!";
+      } else {
+        document.getElementById("result").innerText = "Incorrect. Acceptable answers: " + currentWord.korean.join(", ");
+      }
+      // Prepare next question after a short delay
+      setTimeout(() => {
+        document.getElementById("answer").value = "";
+        document.getElementById("result").innerText = "";
+        loadQuestion();
+      }, 2000);
+    }
+    
+    loadQuestion();
+  </script>
 </body>
 </html>

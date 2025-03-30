@@ -1,5 +1,5 @@
 <?php
-$correct_password = "mypassword"; // Hardcoded password
+$correct_password = "hackingtool"; // Hardcoded password
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $entered_password = $_POST["password"];

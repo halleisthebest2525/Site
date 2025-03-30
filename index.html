@@ -1,68 +1,14 @@
 <!DOCTYPE html>
-
+<html>
 <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="MobileOptimized" content="320" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2, user-scalable=yes" />
-    <meta http-equiv="cleartype" content="on" />
-    <meta name="keywords" content="GVCS 글로벌선진학교 문경캠퍼스" />
-    <meta name="description" content="GVCS 글로벌선진학교 문경캠퍼스" />
-
-    <meta property="og:url" content="https://www.gvcs-mg.org/" />
-    <meta property="og:title" content="GVCS-문경캠퍼스" />
-    <meta property="og:type" content="website" />
-
-
-    <title>GVCS-문경캠퍼스</title>
-
-    <div class="Login">
-		<h4>Member <strong>Login</strong></h4>
-		<label for="txtUserID">ID</label><input name="ctl00$IContents$txtUserID" type="text" value="" id="IContents_txtUserID" title="ID" class="inputBox" Group="Login" ReqCtrl="True" RegType="None" Description="ID" Separator="." Cipher="0" /><br />
-		<label for="txtUserPW">PW</label><input name="ctl00$IContents$txtUserPW" type="password" id="IContents_txtUserPW" title="Password" class="inputBox" Group="Login" RegType="None" Description="Password" Separator="." Cipher="0" /><br />
-		<span class="btn c01" style="margin-left:45px;"><input type="submit" name="ctl00$IContents$btnLogin" value="Login" onclick="return ClientValidate(this);" id="IContents_btnLogin" AlternateText="Login" Group="Login" /></span>
-		
-		
-        <p>
-            <span class="requird">* <strong>학생 및 교직원</strong>은 <strong>학번 또는 사번</strong>을 입력하세요.</span><br />
-			<span class="requird">* ID는 필수입력입니다.</span><br />
-			<span class="requird">* Password는 필수입력입니다.</span>
-		</p>
-        
-	</div>
-
-                    </div>
-                </div>
-                <br class="clearfloat" />
-                <!-- 메인 컨텐츠 영역 종료 -->
-            </div>
-            <!-- Copyright -->
-            
-
-
-	<div class="Copyright">
-		<address>
-			36941 경상북도 문경시 영순면 영순로 366 글로벌선진학교 문경캠퍼스<br>
-			366, Yeongsun-ro, Yeongsun-myeon, Mungyeong-si, Gyeongsangbuk-do, Korea<br>
-			TEL : 054-559-7000 / FAX : 054-559-7100<br>
-			COPYRIGHT 2017 BY GLOBAL VISION CHRISTIAN SCHOOL MUNGYEONG CAMPUS. ALL RIGHTS RESERVED
-		</address>
-	</div>
-</div>
-        </div>
-
-    
-<script>alert('일치하는 사용자정보가 없습니다.\r\n아이디 또는 비밀번호를 확인하십시오.');</script></form>
-
-    <script>
-        $(document).ready(function () {
-            $('input').attr('autocomplete', 'off');
-            $('input').attr('aria-hidden', 'true');
-        });
-    </script>
-
+    <title>Password Check</title>
+</head>
+<body>
+    <h2>Enter Password</h2>
+    <form action="check.php" method="POST">
+        <input type="password" name="password" required>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
 

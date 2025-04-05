@@ -167,8 +167,12 @@
                           .map(ans => ans.trim());
   if (correctAnswers.includes(userAnswer)) {
     document.getElementById("result").textContent = "✅ Correct!";
+    setTimeout(startTest, 1000);
+
   } else {
     document.getElementById("result").textContent = `❌ Wrong! Correct answer: ${correctAnswers.join(', ')}`;
+    setTimeout(startTest, 1000);
+
   }
 }
 

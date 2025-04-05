@@ -160,18 +160,18 @@
     }
 
     function checkAnswer() {
-      const userAnswer = document.getElementById("answer").value.trim();
-      const correctAnswer = isEnglishPrompt ? currentWord.kor : currentWord.eng;
-      if (userAnswer === correctAnswer) {
-        document.getElementById("result").textContent = "✅ Correct!";
-        setTimeout(startTest, 1000);
+  const userAnswer = document.getElementById("answer").value.trim();
+  // Split answers by comma and trim extra spaces
+  const correctAnswers = (isEnglishPrompt ? currentWord.kor : currentWord.eng)
+                          .split(',')
+                          .map(ans => ans.trim());
+  if (correctAnswers.includes(userAnswer)) {
+    document.getElementById("result").textContent = "✅ Correct!";
+  } else {
+    document.getElementById("result").textContent = `❌ Wrong! Correct answer: ${correctAnswers.join(', ')}`;
+  }
+}
 
-      } else {
-        document.getElementById("result").textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
-        setTimeout(startTest, 1000);
-
-      }
-    }
   </script>
 
 </body>

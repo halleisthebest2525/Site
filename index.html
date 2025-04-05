@@ -164,8 +164,12 @@
       const correctAnswer = isEnglishPrompt ? currentWord.kor : currentWord.eng;
       if (userAnswer === correctAnswer) {
         document.getElementById("result").textContent = "✅ Correct!";
+        setTimeout(startTest, 1000);
+
       } else {
         document.getElementById("result").textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
+        setTimeout(startTest, 1000);
+
       }
     }
   </script>

@@ -2,236 +2,173 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Korean-English Vocab Test</title>
+  <title>Vocab Tester</title>
   <style>
-    .hidden { display: none; }
+    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    input, button { font-size: 18px; padding: 5px; margin: 10px; }
   </style>
 </head>
 <body>
-  <h1>Korean-English Vocab Test</h1>
 
-  <!-- Settings: Choose the word range -->
-  <div id="settings">
-    <p>Choose a range of words (1 to 100):</p>
-    <form id="rangeForm">
-      <label>Start index (1-based): 
-        <input type="number" id="startIndex" value="1" min="1">
-      </label>
-      <label>End index: 
-        <input type="number" id="endIndex" value="10" min="1">
-      </label>
-      <button type="submit">Start Test</button>
-    </form>
+  <h1>English-Korean Vocab Tester</h1>
+
+  <div>
+    <label>Choose word range:</label><br>
+    From <input type="number" id="startRange" value="301" min="301" max="400">
+    to <input type="number" id="endRange" value="400" min="301" max="400">
+    <button onclick="startTest()">Start</button>
   </div>
 
-  <!-- Quiz Section -->
-  <div id="quiz" class="hidden">
-    <p id="question"></p>
-    <input type="text" id="answer" placeholder="Your answer">
-    <button onclick="checkAnswer()">Submit</button>
-    <p id="feedback"></p>
-    <p>Question <span id="currentCount"></span> of <span id="totalCount"></span></p>
+  <h2 id="quiz"></h2>
+
+  <div>
+    <input id="answer" placeholder="Type your answer">
+    <button onclick="checkAnswer()">Check</button>
   </div>
 
-  <!-- Results Section -->
-  <div id="results" class="hidden">
-    <h2>Test Completed!</h2>
-    <p>Your score: <span id="score"></span>/<span id="total"></span></p>
-    <button onclick="restartTest()">Restart</button>
-  </div>
+  <p id="result"></p>
 
   <script>
-    // Sample vocab array. Replace with your 400 words.
-    const vocab = [
-    { english: "leak", korean: "새다" },
-    { english: "behave", korean: "행동하다" },
-    { english: "wrap", korean: "싸다, 포장하다" },
-    { english: "locate", korean: "위치하다" },
-    { english: "charge", korean: "청구하다" },
-    { english: "review", korean: "복습하다" },
-    { english: "refuse", korean: "거절하다" },
-    { english: "complain", korean: "불평하다" },
-    { english: "remain", korean: "남다; 유적" },
-    { english: "warn", korean: "경고하다" },
-    { english: "bend", korean: "구부리다" },
-    { english: "suffer", korean: "고통을 겪다, 괴로워하다" },
-    { english: "whisper", korean: "속삭이다" },
-    { english: "prepare", korean: "준비하다" },
-    { english: "roar", korean: "으르렁거리다" },
-    { english: "float", korean: "뜨다, 띄우다" },
-    { english: "drag", korean: "질질 끌다" },
-    { english: "overhear", korean: "엿듣다" },
-    { english: "slide", korean: "미끄러지다" },
-    { english: "suck", korean: "빨다" },
-    { english: "bother", korean: "괴롭히다" },
-    { english: "deal", korean: "분배하다, 거래하다" },
-    { english: "treat", korean: "다루다, 대우, 대접하다" },
-    { english: "destroy", korean: "파괴하다" },
-    { english: "accept", korean: "받아들이다" },
-    { english: "depend", korean: "의지하다" },
-    { english: "nod", korean: "끄덕이다" },
-    { english: "remove", korean: "제거하다, 치우다" },
-    { english: "beat", korean: "때리다, 이기다" },
-    { english: "clap", korean: "(손뼉을) 치다" },
-    { english: "feed", korean: "기르다" },
-    { english: "obtain", korean: "얻다, 획득하다" },
-    { english: "drown", korean: "물에 빠지다" },
-    { english: "remind", korean: "생각나게 하다" },
-    { english: "occur", korean: "일어나다, 생각나다" },
-    { english: "ache", korean: "아프다" },
-    { english: "repeat", korean: "되풀이하다" },
-    { english: "attend", korean: "참석하다" },
-    { english: "sigh", korean: "한숨 쉬다" },
-    { english: "pray", korean: "빌다, 기도하다" },
-    { english: "press", korean: "누르다" },
-    { english: "bear", korean: "낳다, 참다; 곰" },
-    { english: "follow", korean: "따르다" },
-    { english: "hate", korean: "미워하다" },
-    { english: "frighten", korean: "놀라게 하다" },
-    { english: "shout", korean: "외치다" },
-    { english: "mention", korean: "말하다" },
-    { english: "waste", korean: "낭비하다" },
-    { english: "borrow", korean: "빌리다" },
-    { english: "complete", korean: "완성하다" },
-    { english: "excellent", korean: "뛰어난, 우수한" },
-    { english: "competent", korean: "유능한, 충분한" },
-    { english: "religious", korean: "종교적인" },
-    { english: "favorite", korean: "아주 좋아하는" },
-    { english: "entire", korean: "전체의" },
-    { english: "primary", korean: "주요한, 초보의" },
-    { english: "similar", korean: "비슷한" },
-    { english: "precious", korean: "귀중한" },
-    { english: "normal", korean: "정상의, 보통의" },
-    { english: "popular", korean: "인기 있는" },
-    { english: "compulsory", korean: "의무의, 필수의" },
-    { english: "curious", korean: "호기심이 강한" },
-    { english: "independent", korean: "독립의" },
-    { english: "intimate", korean: "친밀한" },
-    { english: "delicious", korean: "맛있는" },
-    { english: "valuable", korean: "귀중한" },
-    { english: "grave", korean: "중대한; 무덤" },
-    { english: "elementary", korean: "초보의" },
-    { english: "crazy", korean: "미친" },
-    { english: "contrary", korean: "반대의" },
-    { english: "regular", korean: "규칙적인" },
-    { english: "social", korean: "사회의" },
-    { english: "straight", korean: "똑바른" },
-    { english: "noble", korean: "고귀한, 고상한" },
-    { english: "anxious", korean: "걱정되는, 열망하는" },
-    { english: "international", korean: "국제적인" },
-    { english: "greedy", korean: "탐욕스러운" },
-    { english: "stupid", korean: "어리석은" },
-    { english: "silly", korean: "어리석은" },
-    { english: "lonely", korean: "고독한" },
-    { english: "dirty", korean: "더러운" },
-    { english: "various", korean: "여러 가지의" },
-    { english: "private", korean: "개인의, 사적인" },
-    { english: "vain", korean: "헛된, 무익한" },
-    { english: "sore", korean: "아픈; 상처" },
-    { english: "fierce", korean: "사나운, 맹렬한" },
-    { english: "firm", korean: "굳은, 견고한" },
-    { english: "solar", korean: "태양의" },
-    { english: "smart", korean: "멋진, 영리한" },
-    { english: "single", korean: "단 하나의" },
-    { english: "diligent", korean: "부지런한" },
-    { english: "serious", korean: "진지한, 심각한" },
-    { english: "fresh", korean: "새로운, 신선한" },
-    { english: "empty", korean: "빈" },
-    { english: "mild", korean: "온화한, 상냥한" },
-    { english: "amazing", korean: "놀라운" },
-    { english: "charming", korean: "매력적인" },
-    { english: "boring", korean: "지루한, 따분한" },
-    { english: "giant", korean: "거인" },
-    { english: "huge", korean: "거대한" }
+    // Word list: 301 to 400
+    const words = [
+      { eng: "leak",       kor: "새다" },
+      { eng: "behave",     kor: "행동하다" },
+      { eng: "wrap",       kor: "싸다, 포장하다" },
+      { eng: "locate",     kor: "위치하다" },
+      { eng: "charge",     kor: "청구하다" },
+      { eng: "review",     kor: "복습하다" },
+      { eng: "refuse",     kor: "거절하다" },
+      { eng: "complain",   kor: "불평하다" },
+      { eng: "remain",     kor: "남다; 유적" },
+      { eng: "warn",       kor: "경고하다" },
+      { eng: "bend",       kor: "구부리다" },
+      { eng: "suffer",     kor: "고통을 겪다, 괴로워하다" },
+      { eng: "whisper",    kor: "속삭이다" },
+      { eng: "prepare",    kor: "준비하다" },
+      { eng: "roar",       kor: "으르렁거리다" },
+      { eng: "float",      kor: "뜨다, 띄우다" },
+      { eng: "drag",       kor: "질질 끌다" },
+      { eng: "overhear",   kor: "엿듣다" },
+      { eng: "slide",      kor: "미끄러지다" },
+      { eng: "suck",       kor: "빨다" },
+      { eng: "bother",     kor: "괴롭히다" },
+      { eng: "deal",       kor: "분배하다, 거래하다" },
+      { eng: "treat",      kor: "다루다, 대우, 대접하다" },
+      { eng: "destroy",    kor: "파괴하다" },
+      { eng: "accept",     kor: "받아들이다" },
+      { eng: "depend",     kor: "의지하다" },
+      { eng: "nod",        kor: "끄덕이다" },
+      { eng: "remove",     kor: "제거하다, 치우다" },
+      { eng: "beat",       kor: "때리다, 이기다" },
+      { eng: "clap",       kor: "(손뼉을) 치다" },
+      { eng: "feed",       kor: "기르다" },
+      { eng: "obtain",     kor: "얻다, 획득하다" },
+      { eng: "drown",      kor: "물에 빠지다" },
+      { eng: "remind",     kor: "생각나게 하다" },
+      { eng: "occur",      kor: "일어나다, 생각나다" },
+      { eng: "ache",       kor: "아프다" },
+      { eng: "repeat",     kor: "되풀이하다" },
+      { eng: "attend",     kor: "참석하다" },
+      { eng: "sigh",       kor: "한숨쉬다" },
+      { eng: "pray",       kor: "빌다, 기도하다" },
+      { eng: "press",      kor: "누르다" },
+      { eng: "bear",       kor: "낳다, 참다; 곰" },
+      { eng: "follow",     kor: "따르다" },
+      { eng: "hate",       kor: "미워하다" },
+      { eng: "frighten",   kor: "놀라게 하다" },
+      { eng: "shout",      kor: "외치다" },
+      { eng: "mention",    kor: "말하다" },
+      { eng: "waste",      kor: "낭비하다" },
+      { eng: "borrow",     kor: "빌리다" },
+      { eng: "complete",   kor: "완성하다" },
+      { eng: "excellent",  kor: "뛰어난, 우수한" },
+      { eng: "competent",  kor: "유능한, 충분한" },
+      { eng: "religious",  kor: "종교적인" },
+      { eng: "favorite",   kor: "아주 좋아하는" },
+      { eng: "entire",     kor: "전체의" },
+      { eng: "primary",    kor: "주요한, 초보의" },
+      { eng: "similar",    kor: "비슷한" },
+      { eng: "precious",   kor: "귀중한" },
+      { eng: "normal",     kor: "정상의, 보통의" },
+      { eng: "popular",    kor: "인기 있는" },
+      { eng: "compulsory", kor: "의무, 필수" },
+      { eng: "curious",    kor: "호기심이 강한" },
+      { eng: "independent",kor: "독립의" },
+      { eng: "intimate",   kor: "친밀한" },
+      { eng: "delicious",  kor: "맛있는" },
+      { eng: "valuable",   kor: "귀중한" },
+      { eng: "grave",      kor: "중대한; 무덤" },
+      { eng: "elementary", kor: "초보의" },
+      { eng: "crazy",      kor: "미친" },
+      { eng: "contrary",   kor: "반대의" },
+      { eng: "regular",    kor: "규칙적인" },
+      { eng: "social",     kor: "사회의" },
+      { eng: "straight",   kor: "똑바른" },
+      { eng: "noble",      kor: "고귀한, 고상한" },
+      { eng: "anxious",    kor: "걱정되는, 열망하는" },
+      { eng: "international", kor: "국제적인" },
+      { eng: "greedy",     kor: "탐욕스러운" },
+      { eng: "stupid",     kor: "어리석은" },
+      { eng: "silly",      kor: "어리석은" },
+      { eng: "lonely",     kor: "고독한" },
+      { eng: "dirty",      kor: "더러운" },
+      { eng: "various",    kor: "여러 가지의" },
+      { eng: "private",    kor: "개인의, 사적인" },
+      { eng: "vain",       kor: "헛된, 무익한" },
+      { eng: "sore",       kor: "아픈; 상처" },
+      { eng: "fierce",     kor: "사나운, 맹렬한" },
+      { eng: "firm",       kor: "굳은, 견고한" },
+      { eng: "solar",      kor: "태양의" },
+      { eng: "smart",      kor: "멋진, 영리한" },
+      { eng: "single",     kor: "단 하나의" },
+      { eng: "diligent",   kor: "부지런한" },
+      { eng: "serious",    kor: "진지한, 심각한" },
+      { eng: "fresh",      kor: "새로운, 신선한" },
+      { eng: "empty",      kor: "빈" },
+      { eng: "mild",       kor: "온화한, 상냥한" },
+      { eng: "amazing",    kor: "놀라운" },
+      { eng: "charming",   kor: "매력적인" },
+      { eng: "boring",     kor: "지루한, 따분한" },
+      { eng: "giant",      kor: "거인" },
+      { eng: "huge",       kor: "거대한" }
     ];
 
+    let currentWord = null;
+    let isEnglishPrompt = true;
 
-    let selectedWords = [];
-    let currentIndex = 0;
-    let score = 0;
-    let currentQuestionType = ""; // "eng-to-kor" or "kor-to-eng"
+    // Picks a random word from the selected range.
+    function getRandomWord(start, end) {
+      // Adjust for zero-indexed array:
+      const subList = words.slice(start - 301, end - 300);
+      return subList[Math.floor(Math.random() * subList.length)];
+    }
 
-    const settingsDiv = document.getElementById("settings");
-    const quizDiv = document.getElementById("quiz");
-    const resultsDiv = document.getElementById("results");
-
-    // Set up the test based on user input
-    document.getElementById("rangeForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const start = parseInt(document.getElementById("startIndex").value) - 1;
-      const end = parseInt(document.getElementById("endIndex").value);
-      if (start < 0 || end > vocab.length || start >= end) {
-        alert("Please enter a valid range within 1 to " + vocab.length);
+    function startTest() {
+      const start = parseInt(document.getElementById("startRange").value);
+      const end = parseInt(document.getElementById("endRange").value);
+      // Validate range
+      if (start < 301 || end > 400 || start > end) {
+        alert("Please choose a valid range between 301 and 400.");
         return;
       }
-      selectedWords = vocab.slice(start, end);
-      // Shuffle the selected words for random order
-      selectedWords.sort(() => Math.random() - 0.5);
-      currentIndex = 0;
-      score = 0;
-      document.getElementById("totalCount").innerText = selectedWords.length;
-      settingsDiv.classList.add("hidden");
-      quizDiv.classList.remove("hidden");
-      loadQuestion();
-    });
-
-    function loadQuestion() {
-      if (currentIndex >= selectedWords.length) {
-        finishTest();
-        return;
-      }
-      const currentWord = selectedWords[currentIndex];
-      // Randomly choose the question type
-      currentQuestionType = Math.random() < 0.5 ? "eng-to-kor" : "kor-to-eng";
-      if (currentQuestionType === "eng-to-kor") {
-        document.getElementById("question").innerText = "What is the Korean meaning of: " + currentWord.english + "?";
-      } else {
-        document.getElementById("question").innerText = "What is the English meaning of: " + currentWord.korean + "?";
-      }
-      document.getElementById("currentCount").innerText = currentIndex + 1;
+      currentWord = getRandomWord(start, end);
+      isEnglishPrompt = Math.random() < 0.5;
+      // Show prompt (if true, show English to answer in Korean; otherwise vice versa)
+      document.getElementById("quiz").textContent = isEnglishPrompt ? currentWord.eng : currentWord.kor;
+      document.getElementById("result").textContent = "";
       document.getElementById("answer").value = "";
-      document.getElementById("feedback").innerText = "";
     }
 
     function checkAnswer() {
       const userAnswer = document.getElementById("answer").value.trim();
-      const currentWord = selectedWords[currentIndex];
-      let isCorrect = false;
-      if (currentQuestionType === "eng-to-kor") {
-        isCorrect = currentWord.korean.includes(userAnswer);
+      const correctAnswer = isEnglishPrompt ? currentWord.kor : currentWord.eng;
+      if (userAnswer === correctAnswer) {
+        document.getElementById("result").textContent = "✅ Correct!";
       } else {
-        isCorrect = currentWord.english.toLowerCase() === userAnswer.toLowerCase();
+        document.getElementById("result").textContent = `❌ Wrong! Correct answer: ${correctAnswer}`;
       }
-      if (isCorrect) {
-        score++;
-        document.getElementById("feedback").innerText = "Correct!";
-      } else {
-        if (currentQuestionType === "eng-to-kor") {
-          document.getElementById("feedback").innerText = "Incorrect. Acceptable answers: " + currentWord.korean.join(", ");
-        } else {
-          document.getElementById("feedback").innerText = "Incorrect. Correct answer: " + currentWord.english;
-        }
-      }
-      currentIndex++;
-      setTimeout(loadQuestion, 1500);
-    }
-
-    function finishTest() {
-      quizDiv.classList.add("hidden");
-      resultsDiv.classList.remove("hidden");
-      document.getElementById("score").innerText = score;
-      document.getElementById("total").innerText = selectedWords.length;
-    }
-
-    function restartTest() {
-      resultsDiv.classList.add("hidden");
-      settingsDiv.classList.remove("hidden");
     }
   </script>
-</body>
-</html>
 
-    
-  </script>
 </body>
 </html>

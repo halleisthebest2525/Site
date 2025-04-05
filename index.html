@@ -161,10 +161,9 @@
 
     function checkAnswer() {
   const userAnswer = document.getElementById("answer").value.trim();
-  // Split answers by comma and trim extra spaces
-  const correctAnswers = (isEnglishPrompt ? currentWord.kor : currentWord.eng)
-                          .split(',')
-                          .map(ans => ans.trim());
+  // Split correct answer by commas or semicolons, then trim extra spaces
+  const rawAnswers = isEnglishPrompt ? currentWord.kor : currentWord.eng;
+  const correctAnswers = rawAnswers.split(/[,;]+/).map(ans => ans.trim());
   if (correctAnswers.includes(userAnswer)) {
     document.getElementById("result").textContent = "✅ Correct!";
     setTimeout(startTest, 1000);

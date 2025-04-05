@@ -186,7 +186,7 @@
       if (currentQuestionType === "eng-to-kor") {
         document.getElementById("question").innerText = "What is the Korean meaning of: " + currentWord.english + "?";
       } else {
-        document.getElementById("question").innerText = "What is the English meaning of: " + currentWord.korean[0] + "?";
+        document.getElementById("question").innerText = "What is the English meaning of: " + currentWord.korean + "?";
       }
       document.getElementById("currentCount").innerText = currentIndex + 1;
       document.getElementById("answer").value = "";
